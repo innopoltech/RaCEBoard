@@ -6,13 +6,13 @@ uint8_t Telemetry_m::on()
 {
   packet = 0;
 
-  pinMode(53,OUTPUT);
+  pinMode(37,OUTPUT);
   pinMode(9,OUTPUT);
   pinMode(10,OUTPUT);
   
   digitalWrite(9,HIGH);
   digitalWrite(10,HIGH);
-  digitalWrite(53,HIGH);
+  digitalWrite(37,HIGH);
 
   LoRa.setSPIFrequency(1E6);
   initialT=LoRa.begin(433E6);

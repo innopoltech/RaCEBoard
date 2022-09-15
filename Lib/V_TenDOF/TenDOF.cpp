@@ -126,16 +126,19 @@ void BMP_upd_timer()
 
 //MPU Zone
 
-MPU9250 mpu_ob(MPU9250_ADDRESS_AD0_HIGH );
-
+MPU9250 mpu_ob( MPU9250_ADDRESS_AD0_LOW );      //v0.2
+//MPU9250 mpu_ob( MPU9250_ADDRESS_AD0_HIGH );
 
 bool IMU_m::begin()
 {
-  mpu_ob.beginAccel(ACC_FULL_SCALE_16_G);
-  mpu_ob.beginGyro(GYRO_FULL_SCALE_2000_DPS);
-  mpu_ob.beginMag();
 
-    uint8_t sensorId;
+uint8_t sensorId=255;
+for(int i=0;i<3;i++){
+    mpu_ob.beginAccel(ACC_FULL_SCALE_16_G);
+    mpu_ob.beginGyro(GYRO_FULL_SCALE_2000_DPS);
+    mpu_ob.beginMag();
+    delay(150);
+}
     if (!mpu_ob.readId(&sensorId) == 0)return false;
 
     return true;

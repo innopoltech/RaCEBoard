@@ -59,13 +59,13 @@ Serial.println("start OFf");
 #define Buzzer_Pin 4        //Пин к которому подключен бузер
 #define Buzzer_Frequency 2000 //Частота бузера в Гц
 
-#define BuzzerOn tone(Buzzer_Pin, Buzzer_Frequency)     //Активировать бузер
+#define BuzzerOn ;//tone(Buzzer_Pin, Buzzer_Frequency)     //Активировать бузер
 #define BuzzerOnTime(x)  tone(Buzzer_Pin, Buzzer_Frequency, (x) )  //Активировать бузер на некоторое время в мс
 #define BuzzerOff noTone(Buzzer_Pin) //Деактивировать бузер
 
 //Servos
 Servo ServoOne; Servo ServoTwo;Servo ServoThree;Servo ServoFour; 
-#define ServoOneEn ServoOne.attach(11) // Пин 1-го сервопривода на плате питания
+#define ServoOneEn ServoOne.attach(11) // Пин 1-го сервопривода на плате питания (11!)
 #define ServoTwoEn ServoTwo.attach(12) // Пин 2-го сервопривода на плате питания
 #define ServoThreeEn ServoThree.attach(46) // Пин 1-го сервопривода на плате инерциального датчика
 #define ServoFourEn ServoFour.attach(45) // Пин 2-го сервопривода на плате инерциального датчика
@@ -77,7 +77,8 @@ Servo ServoOne; Servo ServoTwo;Servo ServoThree;Servo ServoFour;
 
 
 //DC Motor
-#define DCMotorPin1 3 //Пин 1-го входа мотора
+//#define DCMotorPin1 3 //Пин 1-го входа мотора   V0.1L
+#define DCMotorPin1 6 //Пин 1-го входа мотора V0.1R && V0.2
 #define DCMotorPin2 7 //Пин 2-го входа мотора
 
 #define DCMotor pinMode(14,INPUT_PULLUP) //Необязательно, настраивает пин слежения за перегрузкой по току

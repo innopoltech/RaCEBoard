@@ -3,7 +3,7 @@
 #define MISO_pin 50
 #define MOSI_pin 51
 #define CLK_pin 52
-#define CS_pin 37
+#define CS_pin 37 
 
 #define LogFrecuency 2// 1Hz-30Hz
 
@@ -23,9 +23,10 @@ bool SDCard_m::begin(String msg_)
   digitalWrite(10,HIGH);
   digitalWrite(53,HIGH);
 
+  SPI.setClockDivider(SPI_CLOCK_DIV16);
   bool Init=SD.begin(CS_pin);
   if(!Init)return 0;
-  SPI.setClockDivider(SPI_CLOCK_DIV16);
+
 
   String Name = "Log";
   String EndName = ".txt";

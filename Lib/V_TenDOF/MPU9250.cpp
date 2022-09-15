@@ -1,4 +1,5 @@
 #include "MPU9250.h"
+#include <Arduino.h>
 #include <math.h>
 
 #define AK8963_ADDRESS  0x0C

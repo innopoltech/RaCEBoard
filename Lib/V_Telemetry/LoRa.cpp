@@ -102,6 +102,7 @@ int LoRaClass::begin(long frequency)
   pinMode(_ss, OUTPUT);
   // set SS high
   digitalWrite(_ss, HIGH);
+  delay(2);
 
   if (_reset != -1) {
     pinMode(_reset, OUTPUT);
@@ -115,6 +116,8 @@ int LoRaClass::begin(long frequency)
 
   // start SPI
   _spi->begin();
+  LoRa.setSPIFrequency(1E6);
+  delay(10);
 
   // check version
   uint8_t version = readRegister(REG_VERSION);
@@ -733,6 +736,7 @@ uint8_t LoRaClass::singleTransfer(uint8_t address, uint8_t value)
   uint8_t response;
 
   digitalWrite(_ss, LOW);
+  delay(2);
 
   _spi->beginTransaction(_spiSettings);
   _spi->transfer(address);

@@ -23,8 +23,8 @@ class SDCard_m{
 #include "src/SD/SDCustom.h"
 SDCard_m Card;
 
-Card.begin("Продам гараж, 22м2, в Октябрьском районе");
-Card.println("Кто я? Зачем я? Где атомная батарейка ");
+Card.begin("");
+Card.println("");
 Card.WriteIntDouble(msg_i,2,msg_d,2);
 
 */

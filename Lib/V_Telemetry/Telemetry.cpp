@@ -2,24 +2,38 @@
 
 uint32_t packet = 0;
 
+#define imp_p 37
+
 uint8_t Telemetry_m::on()
 {
   packet = 0;
 
-  pinMode(37,OUTPUT);
+  pinMode(imp_p,OUTPUT); //37
+  digitalWrite(imp_p,HIGH); 
+  
+  pinMode(53,OUTPUT);
+  digitalWrite(53,HIGH); 
+
   pinMode(9,OUTPUT);
   pinMode(10,OUTPUT);
-  
+
   digitalWrite(9,HIGH);
   digitalWrite(10,HIGH);
-  digitalWrite(37,HIGH);
+  
+initialT=0;
 
-  LoRa.setSPIFrequency(1E6);
-  initialT=LoRa.begin(433E6);
-  LoRa.enableCrc();
-  LoRa.setSignalBandwidth(500E3);
-  LoRa.setSpreadingFactor(12);
-  LoRa.setGain(6);
+for(int i =0;i<10;i++){
+   digitalWrite(10,LOW);
+  delay(50);
+   digitalWrite(10,HIGH);
+   delay(50);
+    initialT=LoRa.begin(433E6);
+    if(!initialT)break;    
+}
+    LoRa.enableCrc();
+    LoRa.setSignalBandwidth(500E3);
+    LoRa.setSpreadingFactor(12);
+    LoRa.setGain(6);
   return initialT;
 }
 

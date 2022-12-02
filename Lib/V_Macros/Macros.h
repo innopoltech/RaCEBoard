@@ -59,7 +59,7 @@ Serial.println("start OFf");
 #define Buzzer_Pin 4        //Пин к которому подключен бузер
 #define Buzzer_Frequency 2000 //Частота бузера в Гц
 
-#define BuzzerOn ;//tone(Buzzer_Pin, Buzzer_Frequency)     //Активировать бузер
+#define BuzzerOn tone(Buzzer_Pin, Buzzer_Frequency)     //Активировать бузер
 #define BuzzerOnTime(x)  tone(Buzzer_Pin, Buzzer_Frequency, (x) )  //Активировать бузер на некоторое время в мс
 #define BuzzerOff noTone(Buzzer_Pin) //Деактивировать бузер
 
@@ -94,6 +94,8 @@ void  DCMotorStop()
 }
 void  DCMotorSetSpeed(int y)
 { 
+  DDRG |= 1;
+  PORTG |= 1;
   int x=constrain(y,-100,100);
   x>=0?digitalWrite(DCMotorPin2,HIGH):digitalWrite(DCMotorPin1,HIGH);
   x>=0?analogWrite(DCMotorPin1,255-(uint8_t)(x*2.55)):
